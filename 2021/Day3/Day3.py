@@ -1,4 +1,5 @@
 f = open("input.txt", "r")
+# f = open("test.txt", "r")
 inputData = f.readlines()
 data = [0]*(len(inputData[0])-1)
 oxygen = inputData.copy()
@@ -62,6 +63,7 @@ co2 = inputData.copy()
 while len(co2) > 1:
     for i in range(len(inputData[0])):
         print("Iteration " + str(i))
+        print("Running with Co2: " + str(len(co2)))
         total = 0
         for x in co2:
             try:
@@ -71,9 +73,8 @@ while len(co2) > 1:
                 print(" AJAJAJA" + x)
                 print(i)
 
-        print("Totalt: " + str(total))
-        print("Co2: " + str(len(co2)))
-        if total <= len(co2)/2:
+        print("Number of ones: " + str(total))
+        if total >= len(co2)/2:
             print("Removing 1")
             debug = 0
             for j, x in reversed(list(enumerate(co2))):
@@ -82,7 +83,7 @@ while len(co2) > 1:
                     co2.pop(j)
 
 
-            print("Removed " + str(debug) + " ones")
+            print("Removed " + str(debug) + " ones\n")
         else:
             debug = 0
             print("Removing 0")
@@ -91,7 +92,9 @@ while len(co2) > 1:
                     debug += 1
                     co2.pop(j)
 
-            print("Removed " + str(debug) + " zeros")
+            print("Removed " + str(debug) + " zeros\n")
+        if len(co2) == 1:
+            break
 
 print(co2)
 print(int("".join(co2),2))
