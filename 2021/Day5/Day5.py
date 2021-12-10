@@ -1,5 +1,4 @@
 import os
-from typing import overload
 import numpy as np
 
 filename = os.path.dirname(__file__) + "\\input.txt"
