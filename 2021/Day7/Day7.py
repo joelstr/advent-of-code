@@ -13,7 +13,7 @@ print(sum(np.abs(crabs - median)))
 
 # Part 2
 
-mean = round(np.mean(crabs))
+mean = math.floor(np.mean(crabs))
 print(np.mean(crabs))
 fuel = 0
 for x in np.abs(crabs - mean):
