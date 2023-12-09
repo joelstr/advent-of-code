@@ -44,7 +44,7 @@ if __name__ == '__main__':
     try:
         Part2()
     except KeyboardInterrupt:
-       print("Run interrupted during part 1 after %s seconds" % (time.time() - start_time))
+       print("Run interrupted during part 2 after %s seconds" % (time.time() - start_time))
 
 
     print("Runtime %s seconds" % (time.time() - start_time))
