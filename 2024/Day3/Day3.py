@@ -28,21 +28,15 @@ x = re.finditer(r"do[n't]*\(\)", inputData)
 dontFound = False
 dontstart = []
 doend = []
-test1 = []
-test2 = []
 for r in x:
-    if r.group() == "do()":
-        test2.append(r.end())
-    if r.group() == "don't()":
-        test1.append(r.start())
     if not dontFound:
         if r.group() == "don't()":
             dontFound = True
-            dontstart.append(r.start())
+            dontstart.append(r.end())
     if dontFound:
         if r.group() == "do()":
             dontFound = False
-            doend.append(r.end())
+            doend.append(r.start())
 
 if len(dontstart) > len(doend):
     inputData = inputData[:dontstart[-1]]
@@ -51,20 +45,12 @@ if len(dontstart) > len(doend):
 dontstart.reverse()
 doend.reverse()
 
-
-
 for x in range(len(doend)):
-    print(len(inputData))
-    print(doend[x]-dontstart[x])
     inputData = remove_str_start_end(inputData, dontstart[x], doend[x])
 
 
 
 x = re.findall(r"mul\(\d+,\d+\)", inputData)
-print(x)
-print(dontstart)
-print(doend)
-print(inputData)
 uncorrupted = 0
 for y in x:
     uncorrupted += parseMul(y)
