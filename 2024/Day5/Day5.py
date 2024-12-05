@@ -11,11 +11,6 @@ inputData = f.read()
 
 it = iter(re.split(r'[|\n]', rules))
 rules = list(zip(it, it))
-# first = []
-# second = []
-# for x in rules.split("\n"):
-#     first.append(x.split("|")[0])
-#     second.append(x.split("|")[1])
 
 actualPrints = prints.split("\n")
 wrongPrints = []
@@ -32,10 +27,6 @@ for x in prints.split("\n"):
                 break
         if notOk:
             break
-#         if page in second:
-#             if first[second.index(page)] not in printed and first[second.index(page)] in x.split(','):
-#                 actualPrints.remove(x)
-#                 break
         printed.append(page)
 
 totalValue = 0
