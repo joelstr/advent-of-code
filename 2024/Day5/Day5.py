@@ -3,8 +3,8 @@ import re
 
 # Part 1
 
-# f = open("2024/Day5/input.txt", "r")
-f = open("2024/Day5/testdata.txt", "r")
+f = open("2024/Day5/input.txt", "r")
+# f = open("2024/Day5/testdata.txt", "r")
 inputData = f.read()
 
 [rules, prints] = inputData.split("\n\n")
@@ -47,22 +47,26 @@ print(totalValue)
 #Part 2
 correctedPrints = []
 for x in wrongPrints:
-    actualPrints.append(x)
     pageList = x.split(",")
     printed = []
+
     for i in range(len(pageList)):
         pageNotOk = True
         while pageNotOk:
             Ok = True
             values = [item for item in rules if item[1] == pageList[i]]
             for y in values:
-                if y[0] not in printed and y[0] in x.split(','):
+                if y[0] not in printed and y[0] in pageList:
                     pageList.append(pageList.pop(i))
-                    notOk = False
+                    Ok = False
                     break
             if Ok:
-                pageNotOk = True
+                pageNotOk = False
         printed.append(pageList[i])
     correctedPrints.append(pageList)
 
-print(correctedPrints)
+totalValue = 0
+for x in correctedPrints:
+    totalValue += int(x[int((len(x)-1)/2)])
+
+print(totalValue)
